@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Merry Christmas</title>
+
+    <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="../css.css" rel="stylesheet">
+  </head>
+  <body>
+
+
+    <!-- 배경음악 -->
+
+    <audio id="background_audio" src="1225.mp3"> </audio>
+
+    <!-- Mid Image -->
+  <div class="container" >
+     <div class="row" id="card_image" style="margin-top:120px">
+    <img src="1225.gif" class="img-responsive" >
+     </div>
+
+     <div class="row" id="santa_video" style="display:none; margin-top:120px;">
+     <video id="videoPlayer" width="100%" poster="video_poster1.jpg" > <source src="1225.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+     <!-- controls="" -->
+     </div>
+
+  </div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script>
+      var video = $("#videoPlayer");
+      $(window).load(function(){
+        //   document.getElementById('background_audio').play();
+        });
+
+      $(function() {
+        $("#card_image").click(function() {
+            $('#card_image').hide();
+            $('#santa_video').show();
+            $('#background_audio').trigger("pause");
+ var vid = video[0];                                                                                                                               
+            vid.play();                                                                                                                                       
+            if (vid.requestFullscreen) {                                                                                                                      
+            vid.requestFullscreen();                                                                                                                          
+            } else if (vid.mozRequestFullScreen) {                                                                                                            
+            vid.mozRequestFullScreen();                                                                                                                       
+            } else if (vid.webkitRequestFullscreen) {                                                                                                         
+            vid.webkitRequestFullscreen();                                                                                                                    
+            }
+            $("#videoPlayer").trigger("play");
+        });
+
+        $("#videoPlayer").bind("ended", function() {
+            $('#card_image').show();
+            $('#santa_video').hide();
+            $('#background_audio').trigger("play");
+        });
+
+
+
+        video.on('dblclick', function(e){
+            var vid = video[0];
+            vid.play();
+            if (vid.requestFullscreen) {
+            vid.requestFullscreen();
+            } else if (vid.mozRequestFullScreen) {
+            vid.mozRequestFullScreen();
+            } else if (vid.webkitRequestFullscreen) {
+            vid.webkitRequestFullscreen();
+            }
+        });
+
+    });
+  </script>
+
+
+  </body>
+</html>
+
